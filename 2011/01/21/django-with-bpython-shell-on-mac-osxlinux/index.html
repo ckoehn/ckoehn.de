@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Christian Köhn &mdash; Django with bpython shell on Mac OSX/Linux</title>
+		<link href='//fonts.googleapis.com/css?family=Lobster|Open+Sans:300,400|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" type="text/css" href="http://www.ckoehn.de/theme/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="http://www.ckoehn.de/theme/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="http://www.ckoehn.de/theme/css/monokai.css" />
+
+		<meta name="viewport" content="width=device-width" />
+
+	</head>
+
+	<body>
+		<header id="header">
+			<h1><a href="http://www.ckoehn.de">Christian Köhn</a></h1>
+
+				<nav>
+					<ul id="nav">
+								<li><a href="https://github.com/ckoehn" target="_blank">github</a></li>
+								<li><a href="https://bitbucket.org/ckoehn" target="_blank">bitbucket</a></li>
+					</ul>
+					<div class="floatbreaker"></div>
+				</nav>
+		</header>
+
+	<article id="content">
+		<header>
+			<h1 class="entry-title">
+				<a href="http://www.ckoehn.de/2011/01/21/django-with-bpython-shell-on-mac-osxlinux/" rel="bookmark" title="Django with bpython shell on Mac OSX/Linux">Django with bpython shell on Mac OSX/Linux</a>
+			</h1>
+
+			<aside class="post-info">
+				<time datetime="2011-01-21T11:00:00+01:00">January 21, 2011</time>
+			</aside>
+		</header>
+
+		<div class="entry-content"><ol>
+<li>
+<p>Add this line to your .profile:</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONSTARTUP</span><span class="o">=</span>~/.pythonrc.py
+</pre></div>
+
+
+</li>
+<li>
+<p>Download .pythonrc.py and copy it to your home directory:</p>
+<div class="highlight"><pre><span></span><span class="c1">#.pythonrc</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">django.core.management</span> <span class="kn">import</span> <span class="n">setup_environ</span>
+    <span class="kn">import</span> <span class="nn">settings</span>
+    <span class="n">setup_environ</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+
+    <span class="kn">from</span> <span class="nn">django.db.models.loading</span> <span class="kn">import</span> <span class="n">get_models</span><span class="p">,</span> <span class="n">get_apps</span>
+
+    <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">get_apps</span><span class="p">():</span>
+        <span class="n">app_models</span> <span class="o">=</span> <span class="n">get_models</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">app_models</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">model_labels</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">__name__</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">app_models</span><span class="p">])</span>        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">exec</span><span class="p">(</span><span class="s2">&quot;from </span><span class="si">%s</span><span class="s2"> import *&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s2">&quot;From &#39;</span><span class="si">%s</span><span class="s2">&#39; autoload: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">__name__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">model_labels</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Not imported for &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="o">.</span><span class="n">__name__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Close current terminal and open a new one.</p>
+</li>
+<li>Change to your django project directory an start bpython. If everthing went fine you should see a list of your imported models:<div class="highlight"><pre><span></span>...
+From &#39;auth&#39; autoload: Permission, Group, User, Message
+From &#39;contenttypes&#39; autoload: ContentType
+From &#39;sessions&#39; autoload: Session
+From &#39;sites&#39; autoload: Site
+...
+</pre></div>
+
+
+</li>
+</ol></div>
+	</article>
+
+		<footer id="footer">
+				<span>Powered by <a href="http://pelican.readthedocs.org">Pelican</a></span>
+		</footer>
+
+			<script type="text/javascript">
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-9290581-2']);
+				_gaq.push(['_trackPageview']);
+				(function() {
+					var ga = document.createElement('script');
+					ga.type = 'text/javascript'; ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+	</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Christian Köhn &mdash; Install mod_python on Mac OSX 10.6 (Snow Leopard)</title>
+		<link href='//fonts.googleapis.com/css?family=Lobster|Open+Sans:300,400|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" type="text/css" href="http://www.ckoehn.de/theme/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="http://www.ckoehn.de/theme/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="http://www.ckoehn.de/theme/css/monokai.css" />
+
+		<meta name="viewport" content="width=device-width" />
+
+	</head>
+
+	<body>
+		<header id="header">
+			<h1><a href="http://www.ckoehn.de">Christian Köhn</a></h1>
+
+				<nav>
+					<ul id="nav">
+								<li><a href="https://github.com/ckoehn" target="_blank">github</a></li>
+								<li><a href="https://bitbucket.org/ckoehn" target="_blank">bitbucket</a></li>
+					</ul>
+					<div class="floatbreaker"></div>
+				</nav>
+		</header>
+
+	<article id="content">
+		<header>
+			<h1 class="entry-title">
+				<a href="http://www.ckoehn.de/2010/03/16/install-mod_python-on-mac-osx-10-6-snow-leopard/" rel="bookmark" title="Install mod_python on Mac OSX 10.6 (Snow Leopard)">Install mod_python on Mac OSX 10.6 (Snow Leopard)</a>
+			</h1>
+
+			<aside class="post-info">
+				<time datetime="2010-03-16T11:00:00+01:00">March 16, 2010</time>
+			</aside>
+		</header>
+
+		<div class="entry-content"><ol>
+<li>Grab source of <a href="http://www.modpython.org/">Mod_python</a>. Actually 3.3.1.</li>
+<li>Unpack with your favourite tool</li>
+<li>Change to source directory</li>
+<li>
+<p>Follow steps below</p>
+<div class="highlight"><pre><span></span>$ ./configure --with-apxs<span class="o">=</span>/usr/sbin/apxs
+$ make
+</pre></div>
+
+
+<p>Compilation will fail with this error:</p>
+<div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="n">connobject</span><span class="p">.</span><span class="nl">c</span><span class="p">:</span> <span class="n">In</span> <span class="n">function</span> <span class="err">‘</span><span class="n">_conn_read</span><span class="err">’</span><span class="o">:</span>
+<span class="n">connobject</span><span class="p">.</span><span class="nl">c</span><span class="p">:</span><span class="mi">142</span><span class="o">:</span> <span class="nl">error</span><span class="p">:</span> <span class="n">request</span> <span class="k">for</span> <span class="n">member</span> <span class="err">‘</span><span class="n">next</span><span class="err">’</span> <span class="n">in</span> <span class="n">something</span> <span class="n">not</span> <span class="n">a</span> <span class="n">structure</span> <span class="n">or</span> <span class="k">union</span>
+<span class="nl">apxs</span><span class="p">:</span><span class="nl">Error</span><span class="p">:</span> <span class="n">Command</span> <span class="n">failed</span> <span class="n">with</span> <span class="n">rc</span><span class="o">=</span><span class="mi">65536</span>
+<span class="p">...</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Download this <a href="https://bugzilla.redhat.com/show_bug.cgi?id=465246">patch</a> for src/connobject.c</p>
+</li>
+<li>Save it to the same directory you saved mod_python (presumably the <em>Downloads</em> directory of OS X)<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ..
+$ patch -p0 &lt; mod_python-3.3.1-apr.patch
+$ <span class="nb">cd</span> mod_python-3.3.1
+$ make
+$ sudo make install
+</pre></div>
+
+
+</li>
+</ol>
+<p>Now the module resides in /usr/libexec/apache2. To finish the installation, you need to add mod_python to your httpd.conf:</p>
+<div class="highlight"><pre><span></span>$ sudo vi /etc/apache2/httpd.conf
+</pre></div>
+
+
+<p>and add</p>
+<div class="highlight"><pre><span></span>LoadModule python_module libexec/apache2/mod_python.so
+</pre></div>
+
+
+<p>After restarting apache you are ready to use python.</p>
+<p><strong>Updates:</strong><br />
+2011-01-07: Rewrote the patch-part</p></div>
+	</article>
+
+		<footer id="footer">
+				<span>Powered by <a href="http://pelican.readthedocs.org">Pelican</a></span>
+		</footer>
+
+			<script type="text/javascript">
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-9290581-2']);
+				_gaq.push(['_trackPageview']);
+				(function() {
+					var ga = document.createElement('script');
+					ga.type = 'text/javascript'; ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+	</body>
+</html>

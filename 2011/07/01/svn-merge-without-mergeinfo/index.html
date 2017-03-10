@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Christian Köhn &mdash; SVN merge without mergeinfo</title>
+		<link href='//fonts.googleapis.com/css?family=Lobster|Open+Sans:300,400|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" type="text/css" href="http://www.ckoehn.de/theme/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="http://www.ckoehn.de/theme/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="http://www.ckoehn.de/theme/css/monokai.css" />
+
+		<meta name="viewport" content="width=device-width" />
+
+	</head>
+
+	<body>
+		<header id="header">
+			<h1><a href="http://www.ckoehn.de">Christian Köhn</a></h1>
+
+				<nav>
+					<ul id="nav">
+								<li><a href="https://github.com/ckoehn" target="_blank">github</a></li>
+								<li><a href="https://bitbucket.org/ckoehn" target="_blank">bitbucket</a></li>
+					</ul>
+					<div class="floatbreaker"></div>
+				</nav>
+		</header>
+
+	<article id="content">
+		<header>
+			<h1 class="entry-title">
+				<a href="http://www.ckoehn.de/2011/07/01/svn-merge-without-mergeinfo/" rel="bookmark" title="SVN merge without mergeinfo">SVN merge without mergeinfo</a>
+			</h1>
+
+			<aside class="post-info">
+				<time datetime="2011-07-01T11:00:00+02:00">July 01, 2011</time>
+			</aside>
+		</header>
+
+		<div class="entry-content"><p>If you are about to merge a branch back into trunk and experience the following error, you are using svn 1.4 or your admin forgot to update your repository.</p>
+<div class="highlight"><pre><span></span>svn merge --reintegrate http://svn/calc/branches/my-calc-branch
+
+Querying mergeinfo requires version <span class="m">3</span> of the FSFS filesystem schema<span class="p">;</span>
+</pre></div>
+
+
+<p>In this case you could use:</p>
+<div class="highlight"><pre><span></span>svn merge http://svn/calc/trunk@X http://svn/calc/branches/my-calc-branch
+</pre></div>
+
+
+<p>or</p>
+<div class="highlight"><pre><span></span>svn merge -r X:HEAD http://svn/calc/branches/my-calc-branch
+</pre></div>
+
+
+<p>where <em>X</em> is either the revision you created your branch from or the revision you last merged into your branch.</p></div>
+	</article>
+
+		<footer id="footer">
+				<span>Powered by <a href="http://pelican.readthedocs.org">Pelican</a></span>
+		</footer>
+
+			<script type="text/javascript">
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-9290581-2']);
+				_gaq.push(['_trackPageview']);
+				(function() {
+					var ga = document.createElement('script');
+					ga.type = 'text/javascript'; ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+	</body>
+</html>

@@ -1,0 +1,237 @@
+body {
+	background-color: #fafafa;
+	color: #333;
+	border-top: 5px solid #333;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 1.188em;
+	padding: 0 2em 0 2em;
+	min-width: 33em;
+}
+
+a {
+	color: #CB2754;
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 300;
+	margin-top: 1.5em;
+}
+
+h1 {
+	font-size: 2em;
+	margin: 0.67em 0;
+}
+
+h2 {
+	font-size: 1.474em;
+}
+
+h3, h4, h5, h6 {
+	font-size: 1.211em;
+}
+
+p, pre {
+	margin: 1em 0;
+}
+
+b, strong {
+	font-weight: 400;
+}
+
+menu, ol, ul {
+	margin: 1em 0;
+	padding: 0 0 0 40px;
+}
+
+.floatbreaker {
+	clear: both;
+}
+
+/* ################################################# */
+/* ################## HEADER ####################### */
+/* ################################################# */
+
+#header {
+	width: 33em;
+	margin: auto;
+	padding: 1.5em 0 0.5em;
+	border-bottom: 1px solid #333;
+}
+
+#header h1 {
+	font-family: "Lobster", sans-serif;
+	margin: 0;
+	float: left;
+}
+
+#header a {
+	color: inherit;
+}
+
+#header ul {
+	float: right;
+	margin: 0.9em 0 0;
+	padding: 0;
+}
+
+#header li {
+	font-size: 0.789em;
+	display: inline;
+	padding-right: 1em;
+	text-transform: uppercase;
+}
+
+#header li:last-child {
+	padding-right: 0;
+}
+
+/* ################################################# */
+/* ################## CONTENT ###################### */
+/* ################################################# */
+
+#content {
+	width: 33em;
+	margin: auto;
+}
+
+.entry-title {
+	margin: 1em 0 0;
+	line-height: 1.3;
+	text-align: center;
+}
+
+.entry-title a {
+	color: inherit;
+}
+
+.post-info {
+	color: #B0B0B0;
+	font-size: 0.8em;
+	margin: 1em 0 2em 0;
+	text-align: center;
+}
+
+.post-info time {
+	position: relative;
+}
+
+.post-info time:before {
+	position: absolute;
+	content: "";
+	width: 6em;
+	border-top: solid 1px #E0E0E0;
+	left: 100%;
+	top: 0.7em;
+	margin-left: 1em;
+}
+
+.post-info time:after {
+	position: absolute;
+	content: "";
+	width: 6em;
+	border-top: solid 1px #E0E0E0;
+	right: 100%;
+	top: 0.7em;
+	margin-right: 1em;
+}
+
+.entry-content {
+	line-height: 1.6;
+}
+
+.entry-content code, pre {
+	font-family: "Source Code Pro", sans-serif;
+}
+
+.entry-content code {
+	white-space: pre-wrap;
+}
+
+.entry-content pre {
+	padding: 0.5em 1.4em 0.5em 1.4em;
+	white-space: pre;
+	overflow-x: auto;
+	font-size: 0.684em;
+	color: #ffffff;
+}
+
+.entry-content .codehilite {
+	border-radius: 5px;
+}
+
+.entry-content img {
+	width: 100%;
+}
+
+/* ################################################# */
+/* ################### FOOTER ###################### */
+/* ################################################# */
+
+#footer {
+	width: 33em;
+	margin: 2.8em auto 0 auto;
+	padding: 0.8em 0;
+	border-top: 1px solid #333;
+	text-align: center;
+}
+
+#footer span {
+	font-size: 0.8em;
+}
+
+
+/* ################################################# */
+/* ################### INDEX ####################### */
+/* ################################################# */
+
+.splash {
+	margin-top: 2em;
+	line-height: 1.3em;
+}
+
+.splash img {
+	float: left;
+	margin-right: 2em;
+	border-radius: 50%;
+}
+
+.splash p {
+	margin: 0;
+	padding: 38px 0 38px 0;
+}
+
+.article-list {
+	list-style: none outside none;
+	padding: 0;
+	margin: 1.5em 0;
+}
+
+.article-list li {
+	padding: 0.5em 0;
+}
+
+.article-list .article-published {
+	color: #999999;
+	font-size: 0.6em;
+	padding-right: 1em;
+	vertical-align: middle;
+	display: inline-block;
+	width: 10em;
+	text-transform: uppercase;
+}
+
+.article-list .article-title {
+	display: inline;
+	vertical-align: middle;
+	font-size: 1em;
+	margin: 0;
+}
+
+.paginator {
+	margin: 2em 0 0;
+	text-align: center;
+	font-size: 1em;
+}
