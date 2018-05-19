@@ -59,12 +59,12 @@
         <span class="n">app_models</span> <span class="o">=</span> <span class="n">get_models</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">app_models</span><span class="p">:</span>
             <span class="k">continue</span>
-        <span class="n">model_labels</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">__name__</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">app_models</span><span class="p">])</span>        
+        <span class="n">model_labels</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="vm">__name__</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">app_models</span><span class="p">])</span>        
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">exec</span><span class="p">(</span><span class="s2">&quot;from </span><span class="si">%s</span><span class="s2"> import *&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
-            <span class="k">print</span> <span class="s2">&quot;From &#39;</span><span class="si">%s</span><span class="s2">&#39; autoload: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">__name__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">model_labels</span><span class="p">)</span>
+            <span class="k">exec</span><span class="p">(</span><span class="s2">&quot;from </span><span class="si">%s</span><span class="s2"> import *&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s2">&quot;From &#39;</span><span class="si">%s</span><span class="s2">&#39; autoload: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">model_labels</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s2">&quot;Not imported for &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="o">.</span><span class="n">__name__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+            <span class="k">print</span> <span class="s2">&quot;Not imported for &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">app</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="k">pass</span>
 </pre></div>
@@ -91,16 +91,5 @@ From &#39;sites&#39; autoload: Site
 				<span>Powered by <a href="http://pelican.readthedocs.org">Pelican</a></span>
 		</footer>
 
-			<script type="text/javascript">
-				var _gaq = _gaq || [];
-				_gaq.push(['_setAccount', 'UA-9290581-2']);
-				_gaq.push(['_trackPageview']);
-				(function() {
-					var ga = document.createElement('script');
-					ga.type = 'text/javascript'; ga.async = true;
-					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-				})();
-			</script>
 	</body>
 </html>

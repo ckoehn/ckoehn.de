@@ -78,8 +78,8 @@ To download a copy of your bookmarks go to <em>Settings</em> -&gt; <em>Export / 
     <span class="k">def</span> <span class="nf">handle_starttag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span>
             <span class="n">bookmark</span> <span class="o">=</span> <span class="p">{}</span>        
-            <span class="n">bookmark</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">u&#39;&#39;</span>
-            <span class="n">bookmark</span><span class="p">[</span><span class="s1">&#39;note&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">u&#39;&#39;</span>
+            <span class="n">bookmark</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;&#39;</span>
+            <span class="n">bookmark</span><span class="p">[</span><span class="s1">&#39;note&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;&#39;</span>
 
             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s1">&#39;href&#39;</span><span class="p">:</span>
@@ -103,7 +103,7 @@ To download a copy of your bookmarks go to <em>Settings</em> -&gt; <em>Export / 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lasttag</span> <span class="o">==</span> <span class="s1">&#39;dd&#39;</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_bookmark</span><span class="p">[</span><span class="s1">&#39;note&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">last_bookmark</span><span class="p">[</span><span class="s1">&#39;note&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">BookmarkParser</span><span class="p">()</span>
     <span class="n">b</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;delicious-20101223.htm&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
     <span class="n">b</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -119,16 +119,5 @@ To download a copy of your bookmarks go to <em>Settings</em> -&gt; <em>Export / 
 				<span>Powered by <a href="http://pelican.readthedocs.org">Pelican</a></span>
 		</footer>
 
-			<script type="text/javascript">
-				var _gaq = _gaq || [];
-				_gaq.push(['_setAccount', 'UA-9290581-2']);
-				_gaq.push(['_trackPageview']);
-				(function() {
-					var ga = document.createElement('script');
-					ga.type = 'text/javascript'; ga.async = true;
-					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-				})();
-			</script>
 	</body>
 </html>
